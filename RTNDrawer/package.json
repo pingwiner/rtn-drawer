@@ -1,0 +1,36 @@
+{
+  "name": "rtn-drawer",
+  "version": "0.0.1",
+  "description": "Showcase a Fabric Native Component drawing a triangle",
+  "react-native": "js/index",
+  "source": "js/index",
+  "files": [
+    "js",
+    "android",
+    "ios",
+    "rtn-drawer.podspec",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "keywords": ["react-native", "ios", "android"],
+  "repository": "https://github.com/pingwiner/rtn-drawer",
+  "author": "Pingwiner i486dx@yandex.ru> (https://github.com/pingwiner)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pingwiner/rtn-drawer/issues"
+  },
+  "homepage": "https://github.com/pingwiner/rtn-drawer#readme",
+  "devDependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "codegenConfig": {
+    "name": "RTNDrawerSpecs",
+    "type": "components",
+    "jsSrcsDir": "js"
+  }
+}
