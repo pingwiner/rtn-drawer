@@ -18,6 +18,7 @@
     "react-native-gesture-handler": "^2.13.4",
     "react-native-reanimated": "^3.5.4",
     "react-native-web": "^0.19.9",
+    "rnjsisample": "../RNJSISample",
     "rtn-drawer": "../RTNDrawer"
   },
   "devDependencies": {

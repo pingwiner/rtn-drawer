@@ -8,6 +8,10 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet } from 'react-native';
 import { Slider } from '@react-native-assets/slider'
 import RTNDrawer from 'rtn-drawer/js/RTNDrawerNativeComponent';
+import { hello } from 'rnjsisample';
+
+const helloMessage = hello();
+
 
 const App: () => JSX.Element = () => {
   const [angle, setAngle] = useState(0)
@@ -30,6 +34,7 @@ const App: () => JSX.Element = () => {
 		  onValueChange={onChange}
 		  style={styles.slider}
 	    />
+            <Text style={styles.text}>Text from JSI: {helloMessage}</Text>
       </View>
 
   );
@@ -45,12 +50,17 @@ const styles = StyleSheet.create({
 
   slider: {
     width: '80%',
-	marginTop: '32'
+    marginTop: '32'
   },
 
   drawer: {
     width: 200,
     height: 200
+  },
+
+  text: {
+    marginTop: '32',
+    color: 'white',
   }
 });
 
