@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import <OpenGLES/ES2/glext.h>
-#include "draw.h"
+#include "../cpp/draw.h"
 
 using namespace facebook::react;
 

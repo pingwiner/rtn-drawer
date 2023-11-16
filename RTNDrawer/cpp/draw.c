@@ -1,5 +1,10 @@
+#ifdef ANDROID_BUILD
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
+#endif
+#ifndef ANDROID_BUILD
+#include <OpenGLES/ES2/glext.h>
+#endif
 
 #include "nanovg/nanovg.h"
 #define NANOVG_GLES2_IMPLEMENTATION
