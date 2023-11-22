@@ -7,7 +7,14 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
+import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.soloader.SoLoader;
+import com.facebook.react.bridge.JSIModulePackage;
+import com.rnjsisample.RNJSISampleModulePackage;
+import com.rnjsisample.RNJSISamplePackage;
+import com.facebook.react.bridge.JSIModuleSpec;
+import com.facebook.react.bridge.JavaScriptContextHolder;
+import java.util.ArrayList;
 import java.util.List;
 import com.mytestapp.MyAppPackage;
 
@@ -27,7 +34,29 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           packages.add(new MyAppPackage());
+          //packages.add(new RNJSISamplePackage());
           return packages;
+        }
+
+		private JSIModulePackage mPackage;
+
+        @Override
+        protected JSIModulePackage getJSIModulePackage() {
+		   mPackage = super.getJSIModulePackage();
+
+		  return new JSIModulePackage() {
+	         @Override
+	         public List<JSIModuleSpec> getJSIModules(
+	           final ReactApplicationContext reactApplicationContext,
+	           final JavaScriptContextHolder jsContext
+	         ) {
+	           final List<JSIModuleSpec> specs = new ArrayList<>();
+	           specs.addAll(new RNJSISampleModulePackage().getJSIModules(reactApplicationContext, jsContext));
+			   specs.addAll(mPackage.getJSIModules(reactApplicationContext, jsContext));
+	           return specs;
+	         }
+          };
+
         }
 
         @Override
@@ -44,6 +73,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected Boolean isHermesEnabled() {
           return BuildConfig.IS_HERMES_ENABLED;
         }
+
       };
 
   @Override
@@ -61,4 +91,5 @@ public class MainApplication extends Application implements ReactApplication {
     }
     ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
+
 }

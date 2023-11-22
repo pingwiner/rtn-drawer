@@ -1,5 +1,11 @@
+
 const RNJSISample = require('./NativeRNJSISample').default;
 
-export function hello(): string {
-  return RNJSISample.hello();
+export function helloWorld(): string {
+  return RNJSISample.helloWorld();
 }
+
+
+
+
+

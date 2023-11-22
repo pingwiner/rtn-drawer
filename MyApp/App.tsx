@@ -8,9 +8,6 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet } from 'react-native';
 import { Slider } from '@react-native-assets/slider'
 import RTNDrawer from 'rtn-drawer/js/RTNDrawerNativeComponent';
-import { hello } from 'rnjsisample';
-
-const helloMessage = hello();
 
 
 const App: () => JSX.Element = () => {
@@ -34,7 +31,7 @@ const App: () => JSX.Element = () => {
 		  onValueChange={onChange}
 		  style={styles.slider}
 	    />
-            <Text style={styles.text}>Text from JSI: {helloMessage}</Text>
+            <Text style={styles.text}>Text from JSI: {helloWorld()}</Text>
       </View>
 
   );

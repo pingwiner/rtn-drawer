@@ -1,44 +1,31 @@
 package com.rnjsisample;
 
-import androidx.annotation.Nullable;
-
+import androidx.annotation.NonNull;
+import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.module.model.ReactModuleInfo;
-import com.facebook.react.module.model.ReactModuleInfoProvider;
-import com.facebook.react.TurboReactPackage;
+import com.facebook.react.uimanager.ViewManager;
+import com.facebook.react.bridge.JavaScriptContextHolder;
+import android.util.Log;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import androidx.annotation.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
 
-public class RNJSISamplePackage extends TurboReactPackage {
+public class RNJSISamplePackage implements ReactPackage {  
 
-  @Nullable
+  @NonNull
   @Override
-  public NativeModule getModule(String name, ReactApplicationContext reactContext) {
-    if (name.equals(RNJSISampleModule.NAME)) {
-      return new RNJSISampleModule(reactContext);
-    } else {
-      return null;
-    }
+  public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {    
+    Log.i("RNJSISample", "createNativeModules " + reactContext.toString());
+    return Collections.singletonList(new RNJSISampleModule(reactContext));
   }
 
+  @NonNull
   @Override
-  public ReactModuleInfoProvider getReactModuleInfoProvider() {
-    return () -> {
-      final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
-      moduleInfos.put(
-              RNJSISampleModule.NAME,
-              new ReactModuleInfo(
-                      RNJSISampleModule.NAME,
-                      RNJSISampleModule.NAME,
-                      false, // canOverrideExistingModule
-                      false, // needsEagerInit
-                      true, // hasConstants
-                      false, // isCxxModule
-                      true // isTurboModule
-      ));
-      return moduleInfos;
-    };
+  public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
+    return Collections.emptyList();
   }
+
 }
